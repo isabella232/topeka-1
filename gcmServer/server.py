@@ -40,6 +40,9 @@ def updateScore(regid, data):
 def sendGcmToUsersWhoseScoreWasBeaten(oldscore, newscore, name):
   # find users with [oldscore, newscore)
   for regid in connected_users.iterkeys():
+    user = connected_users[regid]
+    if not (user['score'] >= oldscore and user['score'] < newscore):
+      return
     sendMessage(regid, {
         'type': 'scoreBeaten',
         'name': name
