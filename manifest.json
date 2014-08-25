@@ -3,7 +3,7 @@
   "description": "Topeka",
   "manifest_version": 2,
   "minimum_chrome_version": "23",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "offline_enabled": true,
   "icons": {
     "72": "icons/Icon-72.png",

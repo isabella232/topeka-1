@@ -2,15 +2,6 @@
 
 /******************************************************************************/
 
-chrome.app.runtime.onLaunched.addListener(function() {
-  chrome.app.window.create('index.html', {
-    width: 244,
-    height: 380,
-  });
-});
-
-/******************************************************************************/
-
 chrome.notifications.onClosed.addListener(function(notificationId) {
   console.log('onClosed fired. notificationId =', notificationId);
 });
@@ -72,6 +63,15 @@ chrome.gcm.onSendError.addListener(function() {
 
 chrome.gcm.onMessagesDeleted.addListener(function() {
   console.error.apply(console, arguments);
+});
+
+/******************************************************************************/
+
+chrome.app.runtime.onLaunched.addListener(function() {
+  chrome.app.window.create('index.html', {
+    width: 244,
+    height: 380,
+  });
 });
 
 /******************************************************************************/

@@ -1,7 +1,7 @@
 {
   "packageId": "com.mmocny.Topeka",
-  "versionCode": 10001,
-  "CFBundleVersion": "0.1.1",
+  "versionCode": 20000,
+  "CFBundleVersion": "0.2.0",
 
   // platform overrides
   "android": {
