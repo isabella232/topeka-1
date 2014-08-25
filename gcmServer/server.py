@@ -30,10 +30,10 @@ def updateScore(regid, data):
   if connected_users.has_key(regid):
     oldscore = connected_users[regid].score
   connected_users[regid] = {
-    'score': data.score,
-    'name': data.name
+    'score': data['score'],
+    'name': data['name']
   }
-  sendGcmToUsersWhoseScoreWasBeaten(oldscore, data.score, data.name)
+  sendGcmToUsersWhoseScoreWasBeaten(oldscore, data['score'], data['name'])
 
 ################################################################################
 
