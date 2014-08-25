@@ -1,5 +1,22 @@
 {
   "packageId": "com.mmocny.Topeka",
   "versionCode": 10001,
-  "CFBundleVersion": "0.1.1"
+  "CFBundleVersion": "0.1.1",
+
+  // platform overrides
+  "android": {
+    "oauth2": {
+      "client_id": "119557287378-ek0kemejnn8rvugmnu6u60tklj61ob41.apps.googleusercontent.com"
+    }
+  },
+  "ios": {
+    "oauth2": {
+      "client_id": ""
+    }
+  },
+  "web": {
+    "oauth2": {
+      "client_id": ""
+    }
+  }
 }

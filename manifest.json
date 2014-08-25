@@ -18,5 +18,13 @@
     "notifications",
     "gcm",
     "<all_urls>"
-  ]
+  ],
+  "oauth2": {
+    "client_id": "",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/gcm_for_chrome",
+      "https://www.googleapis.com/auth/gcm_for_chrome.readonly"
+    ]
+  }
 }
