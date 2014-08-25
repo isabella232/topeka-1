@@ -25,29 +25,33 @@ def random_id():
 
 ################################################################################
 
-def updateScore(regid, score):
+def updateScore(regid, data):
   oldscore = 0
   if connected_user.has_key(regid):
-    oldscore = connected_user[regid]
-  connected_user[regid] = score
-  sendGcmToUsersWhoseScoreWasBeaten(oldscore, score)
+    oldscore = connected_user[regid].score
+  connected_user[regid] = {
+    'score': data.score,
+    'name': data.name
+  }
+  sendGcmToUsersWhoseScoreWasBeaten(oldscore, data.score, data.name)
 
 ################################################################################
 
-def sendGcmToUsersWhoseScoreWasBeaten(oldscore, newscore):
+def sendGcmToUsersWhoseScoreWasBeaten(oldscore, newscore, name):
   # find users with [oldscore, newscore)
-  pass # TODO
+  for regid in connected_user.iterkeys():
+    sendMessage(regid, {
+        'type': 'scoreBeaten',
+        'name': name
+      })
 
 ################################################################################
 
 def sendMessage(to, data):
   send_queue.append({
-    'to': regid,
+    'to': to,
     'message_id': random_id(),
-    'data': {
-      'type': 'userListChangeEh',
-      'users': filter(lambda (r,n): r != regid, connected_users.items())
-    }
+    'data': data
   })
 
 ################################################################################
@@ -100,23 +104,15 @@ def message_callback(session, message):
 
   # TODO: remove "test" ping
   if payload['data'].has_key('test'):
-    # Send a dummy echo response back to the app that sent the upstream message.
-    send_queue.append({
-      'to': msg['from'],
-      'message_id': random_id(),
-      'data': {
-         'pong': msg['message_id']
-      }
-    })
-    return
+    return sendMessage(msg['from'], { 'pong': msg['message_id'] })
 
   #print "Got: " + json.dumps(payload, indent=2)
 
   msg_type = payload['data']['type']
-  if msg_type == 'newScore':
+  if msg_type == 'updateScore':
     # Add this user to the list of actives
     # TODO: how to prune users? (Perhaps after they fail to ack a message?)
-    updateScore(msg['from'], payload['data']['score'])
+    updateScore(msg['from'], payload['data'])
 
 ################################################################################
 
