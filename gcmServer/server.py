@@ -7,7 +7,7 @@ import xmpp
 SERVER = 'gcm.googleapis.com'
 PORT = 5235
 USERNAME = '119557287378'
-PASSWORD = 'AIzaSyB-AIzaSyA2KAXQihKQ07XKIfq_ZtqmnbRQtVHUIwA'
+PASSWORD = 'AIzaSyABJpu8lDTtVgeDwpgNouskBCbbI_L0LAU'
 
 unacked_messages_quota = 1000
 send_queue = []
