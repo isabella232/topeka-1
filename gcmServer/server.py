@@ -106,6 +106,9 @@ def message_callback(session, message):
   if payload['data'].has_key('test'):
     return sendMessage(msg['from'], { 'pong': msg['message_id'] })
 
+  if not payload['data'].has_key('type'):
+    print "WARNING: No Message Type!"
+    return
   #print "Got: " + json.dumps(payload, indent=2)
 
   msg_type = payload['data']['type']

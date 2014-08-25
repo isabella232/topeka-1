@@ -60,7 +60,7 @@ function onScoreBeaten(data) {
       type:'basic',
       title:'Topeka',
       iconUrl: 'icons/Icon-72.png',
-      message: 'Your Score on Topeka was beaten by ' + data.user,
+      message: 'Your Score on Topeka was beaten by ' + data.name,
     }, function() { });
 }
 
