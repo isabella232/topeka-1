@@ -28,7 +28,7 @@ def random_id():
 def updateScore(regid, data):
   oldscore = 0
   if connected_users.has_key(regid):
-    oldscore = connected_users[regid].score
+    oldscore = connected_users[regid]['score']
   connected_users[regid] = {
     'score': data['score'],
     'name': data['name']
@@ -84,7 +84,7 @@ def message_callback(session, message):
     unacked_messages_quota += 1
     return
 
-  # Acknowledge the incoming message immediately.
+  # Send ack
   send({
     'to': msg['from'],
     'message_type': 'ack',

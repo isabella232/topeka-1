@@ -45,7 +45,7 @@ chrome.gcm.onMessage.addListener(function(msg) {
 
   switch(msg.data.type) {
     case 'scoreBeaten': {
-      onScoreBeaten(JSON.parse(msg.data));
+      onScoreBeaten(msg.data);
       break;
     };
     default: {
