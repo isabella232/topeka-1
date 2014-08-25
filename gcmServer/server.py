@@ -27,9 +27,9 @@ def random_id():
 
 def updateScore(regid, data):
   oldscore = 0
-  if connected_user.has_key(regid):
-    oldscore = connected_user[regid].score
-  connected_user[regid] = {
+  if connected_users.has_key(regid):
+    oldscore = connected_users[regid].score
+  connected_users[regid] = {
     'score': data.score,
     'name': data.name
   }
@@ -39,7 +39,7 @@ def updateScore(regid, data):
 
 def sendGcmToUsersWhoseScoreWasBeaten(oldscore, newscore, name):
   # find users with [oldscore, newscore)
-  for regid in connected_user.iterkeys():
+  for regid in connected_users.iterkeys():
     sendMessage(regid, {
         'type': 'scoreBeaten',
         'name': name
