@@ -19,8 +19,8 @@ connected_users = {}
 
 # Return a random alphanumerical id
 def random_id():
-  rid = ''
-  for x in range(8): rid += random.choice(string.ascii_letters + string.digits)
+  chars = string.ascii_letters + string.digits
+  rid = ''.join(random.choice(chars) for i in range(8))
   return rid
 
 ################################################################################
@@ -39,7 +39,7 @@ def updateScore(regid, data):
 
 def sendGcmToUsersWhoseScoreWasBeaten(oldscore, newscore, name):
   # find users with [oldscore, newscore)
-  for regid in connected_users.iterkeys():
+  for regid in connected_users:
     user = connected_users[regid]
     if not (user['score'] >= oldscore and user['score'] < newscore):
       return
